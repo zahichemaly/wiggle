@@ -1,6 +1,7 @@
 import pyautogui
 import threading
 import datetime as dt
+import sys
 
 screenSize = pyautogui.size()
 
@@ -22,7 +23,9 @@ def main():
     hour = dt.datetime.now().hour
     if hour == 17 or hour == 12:
         log("End of day reached. Exiting...")
-        quit()
+        sys.exit()
     else:
         threading.Timer(delay, moveMouse).start()
+        
+log("Started wiggling...")
 main()
