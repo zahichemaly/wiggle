@@ -4,6 +4,8 @@ import datetime as dt
 import sys
 import argparse
 
+pyautogui.FAILSAFE = False
+
 screenSize = pyautogui.size()
 
 parser = argparse.ArgumentParser()
@@ -22,7 +24,10 @@ def log(message):
 
 def moveMouse():
     log("Moved mouse")
-    pyautogui.moveTo(5, screenSize[1], duration = 1)
+    original_pos = pyautogui.position()
+    x,y = original_pos
+    pyautogui.moveTo(x + 100, y + 100, duration = 0.5)
+    pyautogui.moveTo(original_pos, duration = 0.5)
     #pyautogui.click()
     main()
 
